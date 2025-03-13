@@ -7,34 +7,32 @@ import PeopleIcon from "@mui/icons-material/People"
 import PersonIcon from "@mui/icons-material/Person"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { Box, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material"
+import { useTranslation } from 'react-i18next'
 
 function Sidebar({ activePage, onPageChange }) {
+  const { t } = useTranslation();
+  
   const menuItems = [
-    { id: "home", label: "Dashboard", icon: HomeIcon },
-    { id: "analytics", label: "Analytics", icon: BarChartIcon },
-    { id: "users", label: "Users", icon: PeopleIcon },
-    { id: "profile", label: "User Profile", icon: PersonIcon },
-    { id: "account", label: "Account", icon: AccountCircleIcon },
+    { id: "home", label: t('dashboard'), icon: HomeIcon },
+    { id: "analytics", label: t('analytics'), icon: BarChartIcon },
+    { id: "users", label: t('users'), icon: PeopleIcon },
+    { id: "profile", label: t('userProfile'), icon: PersonIcon },
+    { id: "account", label: t('account'), icon: AccountCircleIcon },
     {
       id: "products",
-      label: "Products",
+      label: t('products'),
       icon: InventoryIcon,
-      description: "Manage product catalog",
     },
     {
       id: "orders",
-      label: "Orders",
+      label: t('orders'),
       icon: ShoppingCartIcon,
-      description: "Manage customer orders",
     },
   ]
 
   return (
     <Box
       sx={{
-        width: 240,
-        borderRight: "1px solid",
-        borderColor: "divider",
         p: 2,
         display: "flex",
         flexDirection: "column",
@@ -63,7 +61,7 @@ function Sidebar({ activePage, onPageChange }) {
           </Box>
         </Box>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1, px: 1 }}>
-          ADMIN PANEL
+          {t('adminPanel')}
         </Typography>
       </Box>
 

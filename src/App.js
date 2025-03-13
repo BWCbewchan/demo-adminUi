@@ -1,12 +1,14 @@
 "use client"
 
-import React from "react"
-import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { Box, Button, Tab, Tabs } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
-import { Tabs, Tab, Box } from "@mui/material"
-import ProductForm from "./components/ProductForm"
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+import React from "react"
+import { useTranslation } from 'react-i18next'
 import OrderManagement from "./components/OrderManagement"
+import ProductForm from "./components/ProductForm"
 import UserManagement from "./components/UserManagement"
+import './i18n'
 
 // Tạo theme tối
 const darkTheme = createTheme({
@@ -34,15 +36,26 @@ const darkTheme = createTheme({
 
 function App() {
   const [tabValue, setTabValue] = React.useState(0)
+  const { t, i18n } = useTranslation()
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue)
+  }
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'vi' : 'en'
+    i18n.changeLanguage(newLang)
   }
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Box sx={{ width: "100%", height: "100vh", display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
+          <Button onClick={toggleLanguage} color="primary">
+            {i18n.language === 'en' ? 'Tiếng Việt' : 'English'}
+          </Button>
+        </Box>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={tabValue}
@@ -60,9 +73,9 @@ function App() {
               },
             }}
           >
-            <Tab label="Products" />
-            <Tab label="Orders" />
-            <Tab label="Users" />
+            <Tab label={t('products')} />
+            <Tab label={t('orders')} />
+            <Tab label={t('users')} />
           </Tabs>
         </Box>
         <Box sx={{ flexGrow: 1, overflow: "auto" }}>

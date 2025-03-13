@@ -29,6 +29,7 @@ import {
     Typography,
 } from "@mui/material"
 import { useState } from "react"
+import { useTranslation } from 'react-i18next'
 
 // Sample order data based on the provided JSON
 const sampleOrders = [
@@ -120,6 +121,7 @@ const productNames = {
 }
 
 function OrderManagement() {
+  const { t } = useTranslation()
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
@@ -177,14 +179,14 @@ function OrderManagement() {
         }}
       >
         <Typography variant="h6" fontWeight="medium">
-          E-commerce /{" "}
+          {t('ecommerce')} /{" "}
           <Typography component="span" color="primary">
-            Order Management
+            {t('orderManagement')}
           </Typography>
         </Typography>
         <Box sx={{ position: "relative" }}>
           <TextField
-            placeholder="Search anything here..."
+            placeholder={t('searchAnything')}
             variant="outlined"
             size="small"
             sx={{
@@ -212,19 +214,19 @@ function OrderManagement() {
       <Box sx={{ borderBottom: "1px solid", borderColor: "divider", p: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", fontSize: 14, color: "text.disabled" }}>
           <Typography variant="body2" color="text.disabled">
-            E-commerce
+            {t('ecommerce')}
           </Typography>
           <Typography variant="body2" sx={{ mx: 1 }}>
             /
           </Typography>
           <Typography variant="body2" color="primary">
-            Order Management
+            {t('orderManagement')}
           </Typography>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2 }}>
           <Typography variant="h6" fontWeight="medium">
-            Orders
+            {t('orders')}
           </Typography>
           <Box sx={{ display: "flex", gap: 1 }}>
             <IconButton size="small">
@@ -241,7 +243,7 @@ function OrderManagement() {
       <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <TextField
-            placeholder="Search orders..."
+            placeholder={t('searchOrders')}
             size="small"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -263,23 +265,23 @@ function OrderManagement() {
             }}
           />
           <FormControl size="small" sx={{ minWidth: 160 }}>
-            <InputLabel>Filter by status</InputLabel>
+            <InputLabel>{t('filterByStatus')}</InputLabel>
             <Select
               value={statusFilter}
-              label="Filter by status"
+              label={t('filterByStatus')}
               onChange={(e) => setStatusFilter(e.target.value)}
               startAdornment={<FilterList fontSize="small" sx={{ mr: 1 }} />}
             >
-              <MenuItem value="all">All Statuses</MenuItem>
-              <MenuItem value="pending">Pending</MenuItem>
-              <MenuItem value="shipped">Shipped</MenuItem>
-              <MenuItem value="delivered">Delivered</MenuItem>
-              <MenuItem value="cancelled">Cancelled</MenuItem>
+              <MenuItem value="all">{t('allStatuses')}</MenuItem>
+              <MenuItem value="pending">{t('pending')}</MenuItem>
+              <MenuItem value="shipped">{t('shipped')}</MenuItem>
+              <MenuItem value="delivered">{t('delivered')}</MenuItem>
+              <MenuItem value="cancelled">{t('cancelled')}</MenuItem>
             </Select>
           </FormControl>
         </Box>
         <Button variant="contained" color="primary">
-          Export Orders
+          {t('exportOrders')}
         </Button>
       </Box>
 
@@ -289,14 +291,14 @@ function OrderManagement() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "text.secondary" }}>Order ID</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Date</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Customer</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Total</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Status</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Payment</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('orderId')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('date')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('customer')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('total')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('status')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('payment')}</TableCell>
                 <TableCell align="right" sx={{ color: "text.secondary" }}>
-                  Actions
+                  {t('actions')}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -358,7 +360,7 @@ function OrderManagement() {
           }}
         >
           <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pb: 1 }}>
-            <Typography variant="h6">Order #{selectedOrder._id.$oid.slice(-6)}</Typography>
+            <Typography variant="h6">{t('orderDetails')}</Typography>
             <IconButton onClick={() => setSelectedOrder(null)} size="small">
               <Close fontSize="small" />
             </IconButton>
@@ -369,9 +371,9 @@ function OrderManagement() {
 
           <Box sx={{ px: 3, pt: 2 }}>
             <Tabs value={tabValue} onChange={handleTabChange} aria-label="order details tabs">
-              <Tab label="Order Details" />
-              <Tab label="Customer Info" />
-              <Tab label="Shipping & Payment" />
+              <Tab label={t('orderDetails')} />
+              <Tab label={t('customerInfo')} />
+              <Tab label={t('shippingPayment')} />
             </Tabs>
           </Box>
 
@@ -389,13 +391,13 @@ function OrderManagement() {
                     }}
                   />
                   <FormControl size="small" sx={{ minWidth: 160 }}>
-                    <InputLabel>Update status</InputLabel>
-                    <Select value={selectedOrder.status} label="Update status">
-                      <MenuItem value="pending">Pending</MenuItem>
-                      <MenuItem value="processing">Processing</MenuItem>
-                      <MenuItem value="shipped">Shipped</MenuItem>
-                      <MenuItem value="delivered">Delivered</MenuItem>
-                      <MenuItem value="cancelled">Cancelled</MenuItem>
+                    <InputLabel>{t('updateStatus')}</InputLabel>
+                    <Select value={selectedOrder.status} label={t('updateStatus')}>
+                      <MenuItem value="pending">{t('pending')}</MenuItem>
+                      <MenuItem value="processing">{t('processing')}</MenuItem>
+                      <MenuItem value="shipped">{t('shipped')}</MenuItem>
+                      <MenuItem value="delivered">{t('delivered')}</MenuItem>
+                      <MenuItem value="cancelled">{t('cancelled')}</MenuItem>
                     </Select>
                   </FormControl>
                 </Box>
@@ -544,13 +546,13 @@ function OrderManagement() {
             )}
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
-            <Button variant="outlined">Print Invoice</Button>
+            <Button variant="outlined">{t('printInvoice')}</Button>
             <Box sx={{ flexGrow: 1 }} />
             <Button variant="outlined" onClick={() => setSelectedOrder(null)}>
-              Close
+              {t('close')}
             </Button>
             <Button variant="contained" color="primary">
-              Update Order
+              {t('updateOrder')}
             </Button>
           </DialogActions>
         </Dialog>

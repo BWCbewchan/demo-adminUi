@@ -31,8 +31,10 @@ import {
     Typography,
 } from "@mui/material"
 import { useState } from "react"
+import { useTranslation } from 'react-i18next'
 
 function ProductForm({ onCancel }) {
+  const { t } = useTranslation()
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -50,10 +52,10 @@ function ProductForm({ onCancel }) {
       cpu: "",
       ram: "",
       storage: "",
-      graphicsCard: "",
+      display: "",
+      battery: "",
+      camera: "",
       os: "",
-      weight: "",
-      ports: [""],
     },
     specialFeatures: [""],
     warranty: "",
@@ -189,14 +191,14 @@ function ProductForm({ onCancel }) {
         }}
       >
         <Typography variant="h6" fontWeight="medium">
-          E-commerce /{" "}
+          {t('ecommerce')} /{" "}
           <Typography component="span" color="primary">
-            Add products
+            {t('addProducts')}
           </Typography>
         </Typography>
         <Box sx={{ position: "relative" }}>
           <TextField
-            placeholder="Search anything here..."
+            placeholder={t('searchAnything')}
             variant="outlined"
             size="small"
             sx={{
@@ -224,23 +226,23 @@ function ProductForm({ onCancel }) {
       <Box sx={{ borderBottom: "1px solid", borderColor: "divider", p: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", fontSize: 14, color: "text.disabled" }}>
           <Typography variant="body2" color="text.disabled">
-            Products
+            {t('products')}
           </Typography>
           <Typography variant="body2" sx={{ mx: 1 }}>
             /
           </Typography>
           <Typography variant="body2" color="primary">
-            Add products
+            {t('addProducts')}
           </Typography>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Button startIcon={<ArrowBack />} variant="outlined" onClick={onCancel}>
-              Back to Products
+              {t('backToProducts')}
             </Button>
             <Typography variant="h6" fontWeight="medium">
-              Add new product
+              {t('addNewProduct')}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", gap: 1 }}>
@@ -260,7 +262,7 @@ function ProductForm({ onCancel }) {
             color="inherit"
             sx={{ color: "text.disabled", textTransform: "none" }}
           >
-            Duplicate
+            {t('duplicate')}
           </Button>
           <Button
             startIcon={<Visibility />}
@@ -268,7 +270,7 @@ function ProductForm({ onCancel }) {
             color="inherit"
             sx={{ color: "text.disabled", textTransform: "none" }}
           >
-            Preview
+            {t('preview')}
           </Button>
         </Box>
       </Box>
@@ -279,10 +281,10 @@ function ProductForm({ onCancel }) {
           <Grid item xs={12} md={8}>
             <Box sx={{ mb: 3 }}>
               <Tabs value={tabValue} onChange={handleTabChange} aria-label="product tabs">
-                <Tab label="Basic Info" />
-                <Tab label="Specifications" />
-                <Tab label="Media" />
-                <Tab label="Reviews" />
+                <Tab label={t('basicInfo')} />
+                <Tab label={t('specifications')} />
+                <Tab label={t('media')} />
+                <Tab label={t('reviews')} />
               </Tabs>
             </Box>
 
@@ -291,7 +293,7 @@ function ProductForm({ onCancel }) {
               <Box>
                 <Paper sx={{ p: 3, mb: 3, bgcolor: "background.paper" }}>
                   <Typography variant="h6" gutterBottom>
-                    Product Information
+                    {t('productInfo')}
                   </Typography>
                   <Divider sx={{ mb: 3 }} />
 
@@ -299,7 +301,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Name"
+                        label={t('name')}
                         name="name"
                         value={product.name}
                         onChange={handleChange}
@@ -310,7 +312,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Brand"
+                        label={t('brand')}
                         name="brand"
                         value={product.brand}
                         onChange={handleChange}
@@ -321,7 +323,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
-                        label="Description"
+                        label={t('description')}
                         name="description"
                         value={product.description}
                         onChange={handleChange}
@@ -334,7 +336,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Color"
+                        label={t('color')}
                         name="color"
                         value={product.color}
                         onChange={handleChange}
@@ -345,7 +347,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Stock"
+                        label={t('stock')}
                         name="stock"
                         type="number"
                         value={product.stock}
@@ -357,7 +359,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Warranty"
+                        label={t('warranty')}
                         name="warranty"
                         value={product.warranty}
                         onChange={handleChange}
@@ -368,7 +370,7 @@ function ProductForm({ onCancel }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Support"
+                        label={t('support')}
                         name="support"
                         value={product.support}
                         onChange={handleChange}
@@ -386,7 +388,7 @@ function ProductForm({ onCancel }) {
                             color="primary"
                           />
                         }
-                        label="Mark as New Product"
+                        label={t('markAsNew')}
                       />
                     </Grid>
                   </Grid>
@@ -394,7 +396,7 @@ function ProductForm({ onCancel }) {
 
                 <Paper sx={{ p: 3, bgcolor: "background.paper" }}>
                   <Typography variant="h6" gutterBottom>
-                    Special Features
+                    {t('specialFeatures')}
                   </Typography>
                   <Divider sx={{ mb: 3 }} />
 
@@ -424,7 +426,7 @@ function ProductForm({ onCancel }) {
                       onClick={() => addArrayItem("specialFeatures")}
                       sx={{ mt: 1 }}
                     >
-                      Add Feature
+                      {t('addFeature')}
                     </Button>
                   </Box>
                 </Paper>
@@ -435,7 +437,7 @@ function ProductForm({ onCancel }) {
             {tabValue === 1 && (
               <Paper sx={{ p: 3, bgcolor: "background.paper" }}>
                 <Typography variant="h6" gutterBottom>
-                  Technical Specifications
+                  {t('technicalSpecs')}
                 </Typography>
                 <Divider sx={{ mb: 3 }} />
 
@@ -722,13 +724,13 @@ function ProductForm({ onCancel }) {
           <Grid item xs={12} md={4}>
             <Paper sx={{ p: 3, mb: 3, bgcolor: "background.paper" }}>
               <Typography variant="h6" gutterBottom>
-                Pricing
+                {t('pricing')}
               </Typography>
               <Divider sx={{ mb: 3 }} />
 
               <TextField
                 fullWidth
-                label="Price"
+                label={t('price')}
                 name="price"
                 type="number"
                 value={product.price}
@@ -821,10 +823,10 @@ function ProductForm({ onCancel }) {
 
             <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
               <Button variant="outlined" onClick={onCancel}>
-                Cancel
+                {t('cancel')}
               </Button>
               <Button type="submit" variant="contained" color="primary" size="large">
-                Save Product
+                {t('save')}
               </Button>
             </Box>
           </Grid>

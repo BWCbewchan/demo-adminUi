@@ -1,46 +1,47 @@
 "use client"
 
 import {
-    Add,
-    ChevronLeft,
-    ChevronRight,
-    ContentCopy,
-    Delete,
-    Edit,
-    FilterList,
-    Inventory2,
-    MoreVert,
-    Search,
-    Visibility,
-} from "@mui/icons-material"
+  Add,
+  ChevronLeft,
+  ChevronRight,
+  ContentCopy,
+  Delete,
+  Edit,
+  FilterList,
+  Inventory2,
+  MoreVert,
+  Search,
+  Visibility,
+} from "@mui/icons-material";
 import {
-    Box,
-    Button,
-    Card,
-    CardContent,
-    Chip,
-    Divider,
-    FormControl,
-    IconButton,
-    InputAdornment,
-    InputLabel,
-    ListItemIcon,
-    ListItemText,
-    Menu,
-    MenuItem,
-    Paper,
-    Select,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    TextField,
-    Tooltip,
-    Typography,
-} from "@mui/material"
-import { useState } from "react"
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Paper,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 // Sample product data
 const sampleProducts = [
@@ -131,6 +132,7 @@ const sampleProducts = [
 ]
 
 function ProductList({ onAddProduct }) {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("all")
   const [statusFilter, setStatusFilter] = useState("all")
@@ -205,14 +207,14 @@ function ProductList({ onAddProduct }) {
         }}
       >
         <Typography variant="h6" fontWeight="medium">
-          E-commerce /{" "}
+          {t('ecommerce')} /{" "}
           <Typography component="span" color="primary">
-            Products
+            {t('products')}
           </Typography>
         </Typography>
         <Box sx={{ position: "relative" }}>
           <TextField
-            placeholder="Search anything here..."
+            placeholder={t('searchProducts')}
             variant="outlined"
             size="small"
             sx={{
@@ -240,13 +242,13 @@ function ProductList({ onAddProduct }) {
       <Box sx={{ borderBottom: "1px solid", borderColor: "divider", p: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", fontSize: 14, color: "text.disabled" }}>
           <Typography variant="body2" color="text.disabled">
-            E-commerce
+            {t('ecommerce')}
           </Typography>
           <Typography variant="body2" sx={{ mx: 1 }}>
             /
           </Typography>
           <Typography variant="body2" color="primary">
-            Products
+            {t('products')}
           </Typography>
         </Box>
 
@@ -254,7 +256,7 @@ function ProductList({ onAddProduct }) {
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Inventory2 color="primary" />
             <Typography variant="h6" fontWeight="medium">
-              Product List
+              {t('productList')}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", gap: 1 }}>
@@ -273,7 +275,7 @@ function ProductList({ onAddProduct }) {
         <Card sx={{ flex: 1, bgcolor: "background.paper" }}>
           <CardContent>
             <Typography color="text.secondary" gutterBottom>
-              Total Products
+              {t('totalProducts')}
             </Typography>
             <Typography variant="h4">{sampleProducts.length}</Typography>
           </CardContent>
@@ -281,7 +283,7 @@ function ProductList({ onAddProduct }) {
         <Card sx={{ flex: 1, bgcolor: "background.paper" }}>
           <CardContent>
             <Typography color="text.secondary" gutterBottom>
-              Active Products
+              {t('activeProducts')}
             </Typography>
             <Typography variant="h4">{sampleProducts.filter((p) => p.status === "active").length}</Typography>
           </CardContent>
@@ -289,7 +291,7 @@ function ProductList({ onAddProduct }) {
         <Card sx={{ flex: 1, bgcolor: "background.paper" }}>
           <CardContent>
             <Typography color="text.secondary" gutterBottom>
-              Out of Stock
+              {t('outOfStock')}
             </Typography>
             <Typography variant="h4">{sampleProducts.filter((p) => p.status === "out_of_stock").length}</Typography>
           </CardContent>
@@ -300,7 +302,7 @@ function ProductList({ onAddProduct }) {
       <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <TextField
-            placeholder="Search products..."
+            placeholder={t('searchProducts')}
             size="small"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -322,33 +324,33 @@ function ProductList({ onAddProduct }) {
             }}
           />
           <FormControl size="small" sx={{ minWidth: 160 }}>
-            <InputLabel>Category</InputLabel>
+            <InputLabel>{t('category')}</InputLabel>
             <Select
               value={categoryFilter}
-              label="Category"
+              label={t('category')}
               onChange={(e) => setCategoryFilter(e.target.value)}
               startAdornment={<FilterList fontSize="small" sx={{ mr: 1 }} />}
             >
-              <MenuItem value="all">All Categories</MenuItem>
-              <MenuItem value="Custom Builds">Custom Builds</MenuItem>
-              <MenuItem value="Laptops">Laptops</MenuItem>
-              <MenuItem value="Accessories">Accessories</MenuItem>
-              <MenuItem value="Monitors">Monitors</MenuItem>
+              <MenuItem value="all">{t('allCategories')}</MenuItem>
+              <MenuItem value="Custom Builds">{t('customBuilds')}</MenuItem>
+              <MenuItem value="Laptops">{t('laptops')}</MenuItem>
+              <MenuItem value="Accessories">{t('accessories')}</MenuItem>
+              <MenuItem value="Monitors">{t('monitors')}</MenuItem>
             </Select>
           </FormControl>
           <FormControl size="small" sx={{ minWidth: 160 }}>
-            <InputLabel>Status</InputLabel>
-            <Select value={statusFilter} label="Status" onChange={(e) => setStatusFilter(e.target.value)}>
-              <MenuItem value="all">All Statuses</MenuItem>
-              <MenuItem value="active">Active</MenuItem>
-              <MenuItem value="out_of_stock">Out of Stock</MenuItem>
-              <MenuItem value="discontinued">Discontinued</MenuItem>
+            <InputLabel>{t('status')}</InputLabel>
+            <Select value={statusFilter} label={t('status')} onChange={(e) => setStatusFilter(e.target.value)}>
+              <MenuItem value="all">{t('allStatuses')}</MenuItem>
+              <MenuItem value="active">{t('active')}</MenuItem>
+              <MenuItem value="out_of_stock">{t('outOfStock')}</MenuItem>
+              <MenuItem value="discontinued">{t('discontinued')}</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Tooltip title="Add a new product to your catalog">
+        <Tooltip title={t('addNewProductTooltip')}>
           <Button variant="contained" color="primary" startIcon={<Add />} onClick={onAddProduct} size="large">
-            Add New Product
+            {t('addNewProduct')}
           </Button>
         </Tooltip>
       </Box>
@@ -359,14 +361,14 @@ function ProductList({ onAddProduct }) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "text.secondary" }}>Product</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Category</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Price</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Stock</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Status</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Rating</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('product')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('category')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('price')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('stock')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('status')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('rating')}</TableCell>
                 <TableCell align="right" sx={{ color: "text.secondary" }}>
-                  Actions
+                  {t('actions')}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -453,7 +455,7 @@ function ProductList({ onAddProduct }) {
             <ListItemIcon>
               <Visibility fontSize="small" />
             </ListItemIcon>
-            <ListItemText>View Details</ListItemText>
+            <ListItemText>{t('viewDetails')}</ListItemText>
           </MenuItem>
           <MenuItem
             onClick={() => {
@@ -464,20 +466,20 @@ function ProductList({ onAddProduct }) {
             <ListItemIcon>
               <Edit fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Edit Product</ListItemText>
+            <ListItemText>{t('editProduct')}</ListItemText>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
             <ListItemIcon>
               <ContentCopy fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Duplicate</ListItemText>
+            <ListItemText>{t('duplicate')}</ListItemText>
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleMenuClose} sx={{ color: "error.main" }}>
             <ListItemIcon sx={{ color: "error.main" }}>
               <Delete fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Delete Product</ListItemText>
+            <ListItemText>{t('deleteProduct')}</ListItemText>
           </MenuItem>
         </Menu>
       </Box>

@@ -44,6 +44,7 @@ import {
     Typography,
 } from "@mui/material"
 import { useState } from "react"
+import { useTranslation } from 'react-i18next'
 
 // Sample user data based on the provided JSON
 const sampleUsers = [
@@ -110,6 +111,7 @@ const sampleUsers = [
 ]
 
 function UserManagement() {
+  const { t } = useTranslation()
   const [selectedUser, setSelectedUser] = useState(null)
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
@@ -219,14 +221,14 @@ function UserManagement() {
         }}
       >
         <Typography variant="h6" fontWeight="medium">
-          Users /{" "}
+          {t('usersTitle')} /{" "}
           <Typography component="span" color="primary">
-            User Management
+            {t('usersManagement')}
           </Typography>
         </Typography>
         <Box sx={{ position: "relative" }}>
           <TextField
-            placeholder="Search anything here..."
+            placeholder={t('usersSearchPlaceholder')}
             variant="outlined"
             size="small"
             sx={{
@@ -254,19 +256,19 @@ function UserManagement() {
       <Box sx={{ borderBottom: "1px solid", borderColor: "divider", p: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", fontSize: 14, color: "text.disabled" }}>
           <Typography variant="body2" color="text.disabled">
-            Users
+            {t('usersTitle')}
           </Typography>
           <Typography variant="body2" sx={{ mx: 1 }}>
             /
           </Typography>
           <Typography variant="body2" color="primary">
-            User Management
+            {t('usersManagement')}
           </Typography>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 2 }}>
           <Typography variant="h6" fontWeight="medium">
-            Users
+            {t('usersTitle')}
           </Typography>
           <Box sx={{ display: "flex", gap: 1 }}>
             <IconButton size="small">
@@ -283,7 +285,7 @@ function UserManagement() {
       <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <TextField
-            placeholder="Search users..."
+            placeholder={t('usersSearchUsersPlaceholder')}
             size="small"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -305,21 +307,21 @@ function UserManagement() {
             }}
           />
           <FormControl size="small" sx={{ minWidth: 160 }}>
-            <InputLabel>Filter by role</InputLabel>
+            <InputLabel>{t('usersFilterByRole')}</InputLabel>
             <Select
               value={roleFilter}
-              label="Filter by role"
+              label={t('usersFilterByRole')}
               onChange={(e) => setRoleFilter(e.target.value)}
               startAdornment={<FilterList fontSize="small" sx={{ mr: 1 }} />}
             >
-              <MenuItem value="all">All Roles</MenuItem>
-              <MenuItem value="admin">Admin</MenuItem>
-              <MenuItem value="customer">Customer</MenuItem>
+              <MenuItem value="all">{t('usersAllRoles')}</MenuItem>
+              <MenuItem value="admin">{t('usersAdmin')}</MenuItem>
+              <MenuItem value="customer">{t('usersCustomer')}</MenuItem>
             </Select>
           </FormControl>
         </Box>
         <Button variant="contained" color="primary" startIcon={<Add />}>
-          Add New User
+          {t('usersAddNewUser')}
         </Button>
       </Box>
 
@@ -329,13 +331,13 @@ function UserManagement() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "text.secondary" }}>User</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Email</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Phone</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Location</TableCell>
-                <TableCell sx={{ color: "text.secondary" }}>Role</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('usersUser')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('email')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('phone')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('usersLocation')}</TableCell>
+                <TableCell sx={{ color: "text.secondary" }}>{t('role')}</TableCell>
                 <TableCell align="right" sx={{ color: "text.secondary" }}>
-                  Actions
+                  {t('usersActions')}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -392,20 +394,20 @@ function UserManagement() {
             <ListItemIcon>
               <Visibility fontSize="small" />
             </ListItemIcon>
-            <ListItemText>View Details</ListItemText>
+            <ListItemText>{t('usersViewDetails')}</ListItemText>
           </MenuItemMUI>
           <MenuItemMUI onClick={handleEditFromMenu}>
             <ListItemIcon>
               <Edit fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Edit User</ListItemText>
+            <ListItemText>{t('usersEditUser')}</ListItemText>
           </MenuItemMUI>
           <Divider />
           <MenuItemMUI sx={{ color: "error.main" }}>
             <ListItemIcon sx={{ color: "error.main" }}>
               <Delete fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Delete User</ListItemText>
+            <ListItemText>{t('usersDeleteUser')}</ListItemText>
           </MenuItemMUI>
         </Menu>
       </Box>
@@ -425,7 +427,7 @@ function UserManagement() {
           }}
         >
           <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <Typography variant="h6">User Details</Typography>
+            <Typography variant="h6">{t('userDetails')}</Typography>
             <IconButton onClick={() => setSelectedUser(null)} size="small">
               <Close fontSize="small" />
             </IconButton>
@@ -462,7 +464,7 @@ function UserManagement() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Typography variant="body2" color="text.secondary">
-                  Email
+                  {t('usersEmail')}
                 </Typography>
                 <Typography variant="body1" sx={{ mt: 0.5 }}>
                   {selectedUser.email}
@@ -470,7 +472,7 @@ function UserManagement() {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2" color="text.secondary">
-                  Phone Number
+                  {t('usersPhoneNumber')}
                 </Typography>
                 <Typography variant="body1" sx={{ mt: 0.5 }}>
                   {selectedUser.phoneNumber}
@@ -478,7 +480,7 @@ function UserManagement() {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2" color="text.secondary">
-                  Address
+                  {t('usersAddress')}
                 </Typography>
                 <Typography variant="body1" sx={{ mt: 0.5 }}>
                   {selectedUser.address.street}
@@ -490,7 +492,7 @@ function UserManagement() {
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
             <Button variant="outlined" onClick={() => setSelectedUser(null)}>
-              Close
+              {t('usersClose')}
             </Button>
             <Button
               variant="contained"
@@ -500,7 +502,7 @@ function UserManagement() {
                 handleEditUser(selectedUser)
               }}
             >
-              Edit User
+              {t('usersEditUser')}
             </Button>
           </DialogActions>
         </Dialog>
@@ -520,7 +522,7 @@ function UserManagement() {
         }}
       >
         <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Typography variant="h6">Edit User</Typography>
+          <Typography variant="h6">{t('usersEditUser')}</Typography>
           <IconButton onClick={() => setIsEditDialogOpen(false)} size="small">
             <Close fontSize="small" />
           </IconButton>
@@ -530,7 +532,7 @@ function UserManagement() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Name"
+                label={t('usersName')}
                 name="name"
                 value={editForm.name}
                 onChange={handleInputChange}
@@ -539,17 +541,17 @@ function UserManagement() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth margin="normal">
-                <InputLabel>Role</InputLabel>
-                <Select value={editForm.role} label="Role" name="role" onChange={handleInputChange}>
-                  <MenuItem value="admin">Admin</MenuItem>
-                  <MenuItem value="customer">Customer</MenuItem>
+                <InputLabel>{t('usersRole')}</InputLabel>
+                <Select value={editForm.role} label={t('usersRole')} name="role" onChange={handleInputChange}>
+                  <MenuItem value="admin">{t('usersAdmin')}</MenuItem>
+                  <MenuItem value="customer">{t('usersCustomer')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Email"
+                label={t('usersEmail')}
                 name="email"
                 type="email"
                 value={editForm.email}
@@ -560,7 +562,7 @@ function UserManagement() {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Phone Number"
+                label={t('usersPhoneNumber')}
                 name="phoneNumber"
                 value={editForm.phoneNumber}
                 onChange={handleInputChange}
@@ -570,7 +572,7 @@ function UserManagement() {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Street Address"
+                label={t('usersStreetAddress')}
                 name="street"
                 value={editForm.street}
                 onChange={handleInputChange}
@@ -580,7 +582,7 @@ function UserManagement() {
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
-                label="City"
+                label={t('usersCity')}
                 name="city"
                 value={editForm.city}
                 onChange={handleInputChange}
@@ -590,7 +592,7 @@ function UserManagement() {
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
-                label="State"
+                label={t('usersState')}
                 name="state"
                 value={editForm.state}
                 onChange={handleInputChange}
@@ -600,7 +602,7 @@ function UserManagement() {
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
-                label="ZIP Code"
+                label={t('usersZipCode')}
                 name="zip"
                 value={editForm.zip}
                 onChange={handleInputChange}
@@ -611,10 +613,10 @@ function UserManagement() {
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 3 }}>
           <Button variant="outlined" onClick={() => setIsEditDialogOpen(false)}>
-            Cancel
+            {t('usersCancel')}
           </Button>
           <Button variant="contained" color="primary" onClick={handleSaveUser}>
-            Save Changes
+            {t('usersSaveChanges')}
           </Button>
         </DialogActions>
       </Dialog>
