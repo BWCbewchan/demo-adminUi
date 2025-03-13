@@ -33,6 +33,19 @@ const resources = {
       exportOrders: 'Export Orders',
       totalProducts: 'Total Products',
       activeProducts: 'Active Products',
+      product: 'Product',
+      category: 'Category',
+      price: 'Price',
+      stock: 'Stock',
+      status: 'Status',
+      actions: 'Actions',
+      filter: 'Filter',
+      view: 'View',
+      edit: 'Edit',
+      delete: 'Delete',
+      searchProducts: 'Search products...',
+      active: 'Active',
+      inactive: 'Inactive',
 
       // Order Management
       orderManagement: 'Order Management',
@@ -48,9 +61,7 @@ const resources = {
       date: 'Date',
       customer: 'Customer',
       total: 'Total',
-      status: 'Status',
       payment: 'Payment',
-      actions: 'Actions',
       searchOrders: 'Search orders...',
       printInvoice: 'Print Invoice',
       updateOrder: 'Update Order',
@@ -100,21 +111,14 @@ const resources = {
       save: 'Save',
       cancel: 'Cancel',
       close: 'Close',
-      edit: 'Edit',
-      delete: 'Delete',
-      search: 'Search anything here...',
       back: 'Back',
       duplicate: 'Duplicate',
       preview: 'Preview',
-      view: 'View',
 
       // ProductList Component
       viewDetails: 'View Details',
       editProduct: 'Edit Product',
       deleteProduct: 'Delete Product',
-      category: 'Category',
-      price: 'Price',
-      stock: 'Stock',
       rating: 'Rating',
       ecommerce: 'E-commerce',
 
@@ -131,7 +135,51 @@ const resources = {
       specialFeatures: 'Special Features',
       addFeature: 'Add Feature',
       technicalSpecs: 'Technical Specifications',
-      pricing: 'Pricing'
+      pricing: 'Pricing',
+
+      // Dashboard
+      totalRevenue: 'Total Revenue',
+      totalOrders: 'Total Orders',
+      totalCustomers: 'Total Customers',
+      salesTrend: 'Sales Trend',
+      orderStatus: 'Order Status',
+      productCategories: 'Product Categories',
+      weeklyRevenue: 'Weekly Revenue',
+      
+      // Navigation
+      shipping: 'Shipping',
+      profile: 'Profile',
+      settings: 'Settings',
+      notifications: 'Notifications',
+
+      // Common Actions
+      confirm: 'Confirm',
+      next: 'Next',
+      export: 'Export',
+      import: 'Import',
+      print: 'Print',
+      download: 'Download',
+      upload: 'Upload',
+      
+      // Metrics
+      revenue: 'Revenue',
+      sales: 'Sales',
+      quantity: 'Quantity',
+      time: 'Time',
+      
+      // Status
+      completed: 'Completed',
+      
+      // Messages
+      confirmDelete: 'Are you sure you want to delete this item?',
+      successDelete: 'Item deleted successfully',
+      successSave: 'Changes saved successfully',
+      errorOccurred: 'An error occurred',
+      
+      // Placeholders
+      searchPlaceholder: 'Search...',
+      selectOption: 'Select an option',
+      enterValue: 'Enter a value',
     },
   },
   vi: {
@@ -165,6 +213,19 @@ const resources = {
       exportOrders: 'Xuất đơn hàng',
       totalProducts: 'Tổng số sản phẩm',
       activeProducts: 'Sản phẩm đang bán',
+      product: 'Sản phẩm',
+      category: 'Danh mục',
+      price: 'Giá',
+      stock: 'Tồn kho',
+      status: 'Trạng thái',
+      actions: 'Thao tác',
+      filter: 'Lọc',
+      view: 'Xem',
+      edit: 'Sửa',
+      delete: 'Xóa',
+      searchProducts: 'Tìm kiếm sản phẩm...',
+      active: 'Đang hoạt động',
+      inactive: 'Không hoạt động',
 
       // Order Management
       orderManagement: 'Quản lý đơn hàng',
@@ -180,9 +241,7 @@ const resources = {
       date: 'Ngày',
       customer: 'Khách hàng',
       total: 'Tổng tiền',
-      status: 'Trạng thái',
       payment: 'Thanh toán',
-      actions: 'Thao tác',
       searchOrders: 'Tìm kiếm đơn hàng...',
       printInvoice: 'In hóa đơn',
       updateOrder: 'Cập nhật đơn hàng',
@@ -232,21 +291,14 @@ const resources = {
       save: 'Lưu',
       cancel: 'Hủy',
       close: 'Đóng',
-      edit: 'Sửa',
-      delete: 'Xóa',
-      search: 'Tìm kiếm...',
       back: 'Quay lại',
       duplicate: 'Nhân bản',
       preview: 'Xem trước',
-      view: 'Xem',
 
       // ProductList Component
       viewDetails: 'Xem chi tiết',
       editProduct: 'Sửa sản phẩm',
       deleteProduct: 'Xóa sản phẩm',
-      category: 'Danh mục',
-      price: 'Giá',
-      stock: 'Kho',
       rating: 'Đánh giá',
       ecommerce: 'Thương mại điện tử',
 
@@ -263,7 +315,51 @@ const resources = {
       specialFeatures: 'Tính năng đặc biệt',
       addFeature: 'Thêm tính năng',
       technicalSpecs: 'Thông số kỹ thuật',
-      pricing: 'Giá'
+      pricing: 'Giá',
+
+      // Dashboard
+      totalRevenue: 'Tổng doanh thu',
+      totalOrders: 'Tổng đơn hàng',
+      totalCustomers: 'Tổng khách hàng',
+      salesTrend: 'Xu hướng bán hàng',
+      orderStatus: 'Trạng thái đơn hàng',
+      productCategories: 'Danh mục sản phẩm',
+      weeklyRevenue: 'Doanh thu theo tuần',
+      
+      // Navigation
+      shipping: 'Vận chuyển',
+      profile: 'Hồ sơ',
+      settings: 'Cài đặt',
+      notifications: 'Thông báo',
+
+      // Common Actions
+      confirm: 'Xác nhận',
+      next: 'Tiếp theo',
+      export: 'Xuất',
+      import: 'Nhập',
+      print: 'In',
+      download: 'Tải xuống',
+      upload: 'Tải lên',
+      
+      // Metrics
+      revenue: 'Doanh thu',
+      sales: 'Doanh số',
+      quantity: 'Số lượng',
+      time: 'Thời gian',
+      
+      // Status
+      completed: 'Hoàn thành',
+      
+      // Messages
+      confirmDelete: 'Bạn có chắc chắn muốn xóa mục này?',
+      successDelete: 'Xóa thành công',
+      successSave: 'Lưu thay đổi thành công',
+      errorOccurred: 'Đã xảy ra lỗi',
+      
+      // Placeholders
+      searchPlaceholder: 'Tìm kiếm...',
+      selectOption: 'Chọn một tùy chọn',
+      enterValue: 'Nhập giá trị',
     },
   },
 };
