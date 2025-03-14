@@ -10,12 +10,12 @@ import ProductList from "./components/Products/ProductList"
 import UserManagement from "./components/UserManagement"
 import './i18n'
 
-// Tạo theme tối
+// Màu xanh dương
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#ec4899",
+      main: "#2196f3",
     },
     background: {
       default: "#121212",

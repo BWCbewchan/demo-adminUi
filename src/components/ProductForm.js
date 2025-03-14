@@ -1,34 +1,34 @@
 "use client"
 
 import {
-    Add,
-    ArrowBack,
-    ChevronLeft,
-    ChevronRight,
-    CloudUpload,
-    Delete,
-    FileCopy,
-    Search,
-    Visibility,
+  Add,
+  ArrowBack,
+  ChevronLeft,
+  ChevronRight,
+  CloudUpload,
+  Delete,
+  FileCopy,
+  Search,
+  Visibility,
 } from "@mui/icons-material"
 import {
-    Box,
-    Button,
-    Divider,
-    FormControl,
-    FormControlLabel,
-    Grid,
-    IconButton,
-    InputAdornment,
-    InputLabel,
-    MenuItem,
-    Paper,
-    Select,
-    Switch,
-    Tab,
-    Tabs,
-    TextField,
-    Typography,
+  Box,
+  Button,
+  Divider,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  Switch,
+  Tab,
+  Tabs,
+  TextField,
+  Typography,
 } from "@mui/material"
 import { useState } from "react"
 import { useTranslation } from 'react-i18next'
@@ -56,6 +56,9 @@ function ProductForm({ onCancel }) {
       battery: "",
       camera: "",
       os: "",
+      ports: [""],
+      graphicsCard: "",
+      weight: ""
     },
     specialFeatures: [""],
     warranty: "",
@@ -508,7 +511,7 @@ function ProductForm({ onCancel }) {
                   Ports
                 </Typography>
                 <Box>
-                  {product.specifications.ports.map((port, index) => (
+                  {product.specifications.ports?.map((port, index) => (
                     <Box key={index} sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <TextField
                         fullWidth
@@ -527,7 +530,12 @@ function ProductForm({ onCancel }) {
                       </IconButton>
                     </Box>
                   ))}
-                  <Button startIcon={<Add />} variant="outlined" onClick={() => addArrayItem("ports")} sx={{ mt: 1 }}>
+                  <Button
+                    startIcon={<Add />}
+                    variant="outlined"
+                    onClick={() => addArrayItem("ports")}
+                    sx={{ mt: 1 }}
+                  >
                     Add Port
                   </Button>
                 </Box>
